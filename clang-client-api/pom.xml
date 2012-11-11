@@ -1,0 +1,66 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>nl.bee.clang.clang-client</groupId>
+    <artifactId>clang-client-api</artifactId>
+    <packaging>jar</packaging>
+    <parent>
+        <groupId>nl.bee.clang</groupId>
+        <artifactId>clang-client</artifactId>
+        <version>1.1-SNAPSHOT</version>
+    </parent>
+    <name>clang-client-api</name>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <packageName>nl.bee.clang.ws</packageName> <!-- The name of your generated source package -->
+                    <wsdlDirectory>${basedir}/src/main/wsdl</wsdlDirectory>
+                    <keep>on</keep>
+                    <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+<!--                    <wsdlUrls>
+                        <wsdlUrl>https://secure.myclang.com/app/api/soap/public/index.php?wsdl&amp;version=1.5</wsdlUrl>
+                    </wsdlUrls>-->
+                </configuration>
+
+        <!-- if you want to use a specific version of JAX-WS, you can do so like this -->
+        <!--
+                <dependencies>
+                    <groupId>com.sun.xml.ws</groupId>
+                    <artifactId>jaxws-tools</artifactId>
+                    <version>2.1.1</version>
+                </dependencies>
+         -->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

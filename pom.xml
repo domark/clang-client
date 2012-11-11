@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>nl.bee.clang</groupId>
+  <version>1.1-SNAPSHOT</version>
+  <artifactId>clang-client</artifactId>
+  <packaging>pom</packaging>
+  <name>clang-client</name>
+  <scm>
+         <connection>scm:git:git@github.com:dabloem/ClangClient.git</connection>
+        <url>scm:git:git@github.com:dabloem/ClangClient.git</url>
+	<developerConnection>scm:git:git@github.com:dabloem/ClangClient.git</developerConnection>
+  </scm>
+  <modules>
+    <module>clang-client-api</module>
+    <module>clang-client-impl</module>
+  </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <tagBase>https://svn.apache.org/repos/asf/maven/components/releases</tagBase>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>My Local Repository</name>
+            <url>http://192.168.1.73:8080/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>My Local Repository</name>
+            <url>http://192.168.1.73:8080/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
